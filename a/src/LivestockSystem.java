@@ -13,11 +13,11 @@ abstract class Livestock {
     abstract String makeSound();
 
     void graze() {
-        System.out.println(name + " талбайд бэлчинэ.");
+        System.out.println(name + " Talbaid belchine.");
     }
 
     void graze(String food) {
-        System.out.println(name + " " + food + "-ыг бэлчинэ.");
+        System.out.println(name + " " + food + "-iig belchine.");
     }
 }
 
@@ -34,12 +34,12 @@ class Horse extends Livestock implements WorkRole {
 
     @Override
     String makeSound() {
-        return "Янцгаана!";
+        return "Yntsgaana!";
     }
 
     @Override
     public String performTask() {
-        return "Морь талбайд уналгад хэрэглэгдэнэ.";
+        return "Mori talbaid unalgad hereglegdene.";
     }
 }
 
@@ -51,7 +51,7 @@ class Sheep extends Livestock {
 
     @Override
     String makeSound() {
-        return "Маа!";
+        return "Maa!";
     }
 }
 
@@ -63,12 +63,24 @@ class Camel extends Livestock implements WorkRole {
 
     @Override
     String makeSound() {
-        return "Буйлна!";
+        return "Builna!";
     }
 
     @Override
     public String performTask() {
-        return "Тэмээ говийн тээвэрт хэрэглэгдэнэ.";
+        return "Temee goviin teevert hereglegdene.";
+    }
+}
+
+// Ямаа класс (шинэ мал)
+class Goat extends Livestock {
+    public Goat(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    String makeSound() {
+        return "Mee!";
     }
 }
 
@@ -95,13 +107,15 @@ public class LivestockSystem {
     public static void main(String[] args) {
         Herd herd = new Herd();
 
-        Horse horse = new Horse("Шандаст", 5);
-        Sheep sheep = new Sheep("Цагаан", 3);
-        Camel camel = new Camel("Тэмүүлэн", 7);
+        Horse horse = new Horse("Horse", 5);
+        Sheep sheep = new Sheep("Sheep", 3);
+        Camel camel = new Camel("Camel", 7);
+        Goat goat = new Goat("Goat", 2); // Шинэ мал
 
         herd.addLivestock(horse);
         herd.addLivestock(sheep);
         herd.addLivestock(camel);
+        herd.addLivestock(goat); // Шинээр нэмэгдсэн ямаа
 
         herd.dailyRoutine();
     }
